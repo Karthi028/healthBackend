@@ -23,6 +23,8 @@ const authController = {
                 gender
             });
 
+            await newUser.save();
+
             res.status(201).json({ message: "Registered succesfully" });
 
         } catch (error) {
