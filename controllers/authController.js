@@ -51,7 +51,7 @@ const authController = {
             res.cookie('token', jwtToken, {
                 httpOnly: true,
                 secure: STAGE != "Production",
-                sameSite: 'lax',
+                sameSite: 'none',
             })
 
             res.status(200).json({ message: "Login Succesfull" });
