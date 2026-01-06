@@ -23,15 +23,6 @@ const authController = {
                 gender
             });
 
-            await newUser.save();
-            const jwtToken = JWT.sign({ id: exisingUser[0]._id }, JWT_SECRET, { expiresIn: '8h' });
-
-            res.cookie('token', jwtToken, {
-                httpOnly: true,
-                secure: STAGE != "Production",
-                sameSite: 'none',
-            });``
-
             res.status(201).json({ message: "Registered succesfully" });
 
         } catch (error) {
