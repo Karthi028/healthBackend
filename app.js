@@ -9,7 +9,7 @@ const recordRouter = require('./router/recordRouter');
 const app = express();
 
 const corsOptions = {
-    origin:'http://localhost:5173',
+    origin:'https://healthchek.netlify.app/',
     credentials: true,
 };
 
