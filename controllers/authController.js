@@ -50,7 +50,7 @@ const authController = {
 
             res.cookie('token', jwtToken, {
                 httpOnly: true,
-                secure: STAGE == "Production",
+                secure: true,
                 sameSite: 'none',
             })
 
