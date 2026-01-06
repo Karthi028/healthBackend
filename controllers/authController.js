@@ -5,8 +5,8 @@ const { JWT_SECRET, STAGE } = require('../config/config');
 
 const authController = {
     register: async (req, res) => {
-        try {   
-            const { name, email, password, age, gender} = req.body;
+        try {
+            const { name, email, password, age, gender } = req.body;
 
             const exisingUser = await usermodel.find({ email });
 
@@ -24,6 +24,13 @@ const authController = {
             });
 
             await newUser.save();
+            const jwtToken = JWT.sign({ id: savedUser._id }, JWT_SECRET, { expiresIn: '8h' });
+
+            res.cookie('token', jwtToken, {
+                httpOnly: true,
+                secure: STAGE != "Production",
+                sameSite: 'none',
+            });
 
             res.status(201).json({ message: "Registered succesfully" });
 
@@ -83,7 +90,7 @@ const authController = {
             res.status(200).json({ message: "Logout Successfull" })
         } catch (error) {
             res.status(500).json({ message: 'Error logging out', error: error.message })
-        }   
+        }
     }
 }
 
