@@ -51,7 +51,8 @@ const authController = {
             res.cookie('token', jwtToken, {
                 httpOnly: true,
                 secure: true,
-                sameSite: 'none',
+                sameSite: 'lax',
+                path: '/',
             })
 
             res.status(200).json({ message: "Login Succesfull" });
@@ -80,8 +81,8 @@ const authController = {
 
             res.clearCookie('token', {
                 httpOnly: true,
-                secure: true,      
-                sameSite: 'none'         
+                secure: true,
+                sameSite: 'none'
             });
 
             res.status(200).json({ message: "Logout Successfull" })
