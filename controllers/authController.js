@@ -24,7 +24,7 @@ const authController = {
             });
 
             await newUser.save();
-            const jwtToken = JWT.sign({ id: savedUser._id }, JWT_SECRET, { expiresIn: '8h' });
+            const jwtToken = JWT.sign({ id: user[0]._id }, JWT_SECRET, { expiresIn: '8h' });
 
             res.cookie('token', jwtToken, {
                 httpOnly: true,
