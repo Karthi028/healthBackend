@@ -10,7 +10,7 @@ const app = express();
 
 const corsOptions = {
     origin:'https://healthchek.netlify.app',
-    credentials: true,
+    credentials: true
 };
 
 app.use(cors(corsOptions));
