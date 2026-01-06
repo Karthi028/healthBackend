@@ -78,7 +78,11 @@ const authController = {
         try {
             const token = req.cookies.token;
 
-            res.clearCookie('token')
+            res.clearCookie('token', {
+                httpOnly: true,
+                secure: true,      
+                sameSite: 'none'         
+            });
 
             res.status(200).json({ message: "Logout Successfull" })
         } catch (error) {
